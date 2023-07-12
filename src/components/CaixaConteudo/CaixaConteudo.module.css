@@ -1,0 +1,33 @@
+.container {
+    position: absolute;
+    top: 9vw;
+    right: 50vh;
+    left: 40vh;
+    width: 60vw;
+    -height: 80vh;
+    max-width: 100%;
+    max-height: 100%;
+    border-radius: 3px;
+    background-color: #FFFFFF;
+}
+
+
+ @media (max-width: 1150px) {
+    .container {
+        margin-top: 1rem;
+        margin-left: 1rem;
+        top: 100px;
+        left: 25vw;
+        width: 70vw;
+    }
+ }
+
+ @media (max-width: 800px) {
+    .container {
+        top: 100px;
+        left: 10vw;
+        width: 80vw;
+        margin-top: 1rem;
+        margin: 1rem auto;
+    }
+ }

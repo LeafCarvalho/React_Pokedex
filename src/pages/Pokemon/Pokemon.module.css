@@ -1,0 +1,134 @@
+:root {
+  --normal: #a6a877;
+  --grass: #77c850;
+  --fire: #ee7f30;
+  --water: #678fee;
+  --electric: #f7cf2e;
+  --ice: #98d5d7;
+  --ground: #dfbf69;
+  --flying: #a98ff0;
+  --poison: #a040a0;
+  --fighting: #bf3029;
+  --psychic: #f65687;
+  --dark: #725847;
+  --rock: #b8a137;
+  --bug: #a8b720;
+  --ghost: #6e5896;
+  --steel: #b9b7cf;
+  --dragon: #6f38f6;
+  --fairy: #f9aec7;
+}
+
+.containerPoke {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  margin: 0;
+  padding: 1rem 1rem 2rem 1rem;
+  border-radius: 1rem;
+  background-color: #FFFFFF;
+  height: auto;
+}
+
+.cardPokemon {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 2px;
+  border-radius: 1rem;
+  margin: .6rem;
+  padding: 1rem;
+  border-radius: 3px;
+  color: white;
+}
+
+.cardPokemon ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.cardPokemon ul li {
+  margin-bottom: 5px;
+}
+
+.cardPokemon img {
+  width: 800px;
+  max-width: 100%;
+  height: 80px;
+  max-height: 100%;
+}
+
+.cardPokemon:nth-child(odd) {
+  background-color: var(--normal);
+}
+
+.cardPokemon:nth-child(even) {
+  background-color: var(--grass);
+}
+
+.cardPokemon .grass {
+  background-color: var(--grass);
+}
+
+.cardPokemon .fire {
+  background-color: var(--fire);
+}
+
+.cardPokemon .water {
+  background-color: var(--water);
+}
+
+.cardPokemon .electric {
+  background-color: var(--electric);
+}
+
+.cardPokemon .ice {
+  background-color: var(--ice);
+}
+
+.cardPokemon .ground {
+  background-color: var(--ground);
+}
+
+.cardPokemon .flying {
+  background-color: var(--flying);
+}
+
+.cardPokemon .poison {
+  background-color: var(--poison);
+}
+
+.cardPokemon .fighting {
+  background-color: var(--fighting);
+}
+
+.cardPokemon .psychic {
+  background-color: var(--psychic);
+}
+
+.cardPokemon .dark {
+  background-color: var(--dark);
+}
+
+.cardPokemon .rock {
+  background-color: var(--rock);
+}
+
+.cardPokemon .bug {
+  background-color: var(--bug);
+}
+
+.cardPokemon .ghost {
+  background-color: var(--ghost);
+}
+
+.cardPokemon .steel {
+  background-color: var(--steel);
+}
+
+.cardPokemon .dragon {
+  background-color: var(--dragon);
+}
+
+.cardPokemon .fairy {
+  background-color: var(--fairy);
+}
