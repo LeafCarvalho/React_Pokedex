@@ -5,9 +5,10 @@ import styles from "../Pokemon/Pokemon.module.css";
 import { CaixaConteudo } from "../../components/CaixaConteudo/CaixaConteudo";
 
 export function Pokemon() {
-  const limit = 8;
+  const limit = 9;
   const [visiblePokemons, setVisiblePokemons] = useState(limit);
   const [pokemonsData, setPokemonsData] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
 
   const { data: pokemonUrls, isLoading, error } = useQuery(
     ["pokemons"],
@@ -105,11 +106,26 @@ export function Pokemon() {
     }
   };
 
+  const filterPokemons = () => {
+    if (searchTerm === "") {
+      return pokemonsData;
+    }
+
+    const filteredPokemons = pokemonsData.filter((pokemon) =>
+      pokemon.name.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+
+    return filteredPokemons;
+  };
+
   const children = (
     <>
-      <h1>Pokemons</h1>
+      <div className={styles.title}>
+        <h1>Pokemons</h1>
+        <input type="text" value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} />
+      </div>
       <div className={styles.containerPoke}>
-        {pokemonsData.slice(0, visiblePokemons).map((pokemon) => (
+        {filterPokemons().map((pokemon) => (
           <div
             key={pokemon.id}
             className={styles.cardPokemon}
@@ -118,7 +134,13 @@ export function Pokemon() {
             <div>
               <ul>
                 <li>{pokemon.name}</li>
-                <li>{pokemon.types.map((type) => type.type.name).join(", ")}</li>
+                <li>
+                  <ul>
+                    {pokemon.types.map((type) => (
+                      <li key={type.type.name}>{type.type.name}</li>
+                    ))}
+                  </ul>
+                </li>
               </ul>
             </div>
             <div>

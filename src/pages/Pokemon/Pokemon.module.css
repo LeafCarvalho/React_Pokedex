@@ -19,12 +19,22 @@
   --fairy: #f9aec7;
 }
 
+.title {
+  display: flex;
+  padding: 1rem 1.8rem;
+  justify-content: space-between;
+}
+
+.title > h1 {
+  font-weight: 800;
+}
+
 .containerPoke {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   margin: 0;
   padding: 1rem 1rem 2rem 1rem;
-  border-radius: 1rem;
+  border-radius: 4rem;
   background-color: #FFFFFF;
   height: auto;
 }
@@ -41,9 +51,9 @@
 }
 
 .cardPokemon ul {
+  display: flex;
+  flex-direction: column;
   list-style: none;
-  padding: 0;
-  margin: 0;
 }
 
 .cardPokemon ul li {
@@ -51,7 +61,6 @@
 }
 
 .cardPokemon img {
-  width: 800px;
   max-width: 100%;
   height: 80px;
   max-height: 100%;
