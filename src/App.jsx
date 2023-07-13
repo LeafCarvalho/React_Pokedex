@@ -1,9 +1,15 @@
 import { Pokemon } from "./pages/Pokemon/Pokemon";
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './Global.css'
+import { ModalPok } from "./components/ModalPok/ModalPok";
 
 export default function App() {
   return (
-    <Pokemon />
+    <BrowserRouter>
+    <Routes>
+    <Route path="/" element={<Pokemon /> } />
+    <Route path="/details/:id/:name" element={<ModalPok /> } />
+    </Routes>
+    </BrowserRouter>
   )
 }
-// 0b9269cf7dea9be831117e63c1d2f94e

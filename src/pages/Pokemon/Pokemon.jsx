@@ -1,11 +1,13 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { useQuery } from "react-query";
+import { useNavigate } from "react-router-dom";
 import styles from "../Pokemon/Pokemon.module.css";
 import { CaixaConteudo } from "../../components/CaixaConteudo/CaixaConteudo";
 
 export function Pokemon() {
-  const limit = 9;
+  const navigate = useNavigate();
+  const limit = 12;
   const [visiblePokemons, setVisiblePokemons] = useState(limit);
   const [pokemonsData, setPokemonsData] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
@@ -130,6 +132,7 @@ export function Pokemon() {
             key={pokemon.id}
             className={styles.cardPokemon}
             style={{ backgroundColor: `var(${getTypeColor(pokemon.types[0].type.name)})` }}
+            onClick={() => navigate(`/details/${pokemon.id}/${pokemon.name}`)}
           >
             <div>
               <ul>
@@ -143,7 +146,7 @@ export function Pokemon() {
                 </li>
               </ul>
             </div>
-            <div>
+            <div className={styles.pokeIdImage}>
               <ul>
                 <li>#{pokemon.id}</li>
                 <li>
@@ -157,7 +160,7 @@ export function Pokemon() {
           </div>
         ))}
       </div>
-      {visiblePokemons < 150 && <button onClick={handleLoadMore}>Ver Mais</button>}
+      {visiblePokemons < 150 && <div className={styles.morePokemon}><button onClick={handleLoadMore}>Ver Mais</button></div>}
     </>
   );
 
