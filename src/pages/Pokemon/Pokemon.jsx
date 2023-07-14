@@ -4,13 +4,15 @@ import { useQuery } from "react-query";
 import { useNavigate } from "react-router-dom";
 import styles from "../Pokemon/Pokemon.module.css";
 import { CaixaConteudo } from "../../components/CaixaConteudo/CaixaConteudo";
+import { Modal, Button } from 'react-bootstrap';
+import { ModalPok } from "../../components/ModalPok/ModalPok";
 
 export function Pokemon() {
   const navigate = useNavigate();
   const limit = 12;
   const [visiblePokemons, setVisiblePokemons] = useState(limit);
   const [pokemonsData, setPokemonsData] = useState([]);
-  const [searchTerm, setSearchTerm] = useState("");
+  const [selectedPokemon, setSelectedPokemon] = useState(null);
 
   const { data: pokemonUrls, isLoading, error } = useQuery(
     ["pokemons"],
@@ -108,36 +110,23 @@ export function Pokemon() {
     }
   };
 
-  const filterPokemons = () => {
-    if (searchTerm === "") {
-      return pokemonsData;
-    }
-
-    const filteredPokemons = pokemonsData.filter((pokemon) =>
-      pokemon.name.toLowerCase().includes(searchTerm.toLowerCase())
-    );
-
-    return filteredPokemons;
-  };
-
   const children = (
-    <>
+    <div className={styles.boxPoke}>
       <div className={styles.title}>
         <h1>Pokemons</h1>
-        <input type="text" value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} />
       </div>
       <div className={styles.containerPoke}>
-        {filterPokemons().map((pokemon) => (
+        {pokemonsData.map((pokemon) => (
           <div
             key={pokemon.id}
             className={styles.cardPokemon}
             style={{ backgroundColor: `var(${getTypeColor(pokemon.types[0].type.name)})` }}
-            onClick={() => navigate(`/details/${pokemon.id}/${pokemon.name}`)}
+            onClick={() => setSelectedPokemon(pokemon)}
           >
             <div>
               <ul>
                 <li>{pokemon.name}</li>
-                <li>
+                <li className={styles.pokemonTypes}>
                   <ul>
                     {pokemon.types.map((type) => (
                       <li key={type.type.name}>{type.type.name}</li>
@@ -160,8 +149,17 @@ export function Pokemon() {
           </div>
         ))}
       </div>
-      {visiblePokemons < 150 && <div className={styles.morePokemon}><button onClick={handleLoadMore}>Ver Mais</button></div>}
-    </>
+      {visiblePokemons < 150 && (
+        <div className={styles.morePokemon}>
+          <div className={styles.buttonContainer}>
+            <button onClick={handleLoadMore}>Ver Mais</button>
+          </div>
+        </div>
+      )}
+      {selectedPokemon && (
+        <ModalPok pokemon={selectedPokemon} closeModal={() => setSelectedPokemon(null)} />
+      )}
+    </div>
   );
 
   return (
