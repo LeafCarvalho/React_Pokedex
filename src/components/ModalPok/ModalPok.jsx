@@ -1,8 +1,13 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
-import { Modal, Button } from "react-bootstrap";
-import styles from "./ModalPok.module.css";
+// Assets
 import imageLoading from '../../Assets/Loading.gif'
+// Bootstrap
+import { Modal, Button } from "react-bootstrap";
+// Css
+import styles from "./ModalPok.module.css";
+// Hooks
+import React, { useState, useEffect } from "react";
+// Libs
+import axios from "axios";
 
 export const ModalPok = ({ pokemon, closeModal }) => {
   const [evolutions, setEvolutions] = useState([]);

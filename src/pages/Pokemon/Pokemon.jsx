@@ -16,11 +16,7 @@ export function Pokemon() {
   const [pokemonsData, setPokemonsData] = useState([]);
   const [selectedPokemon, setSelectedPokemon] = useState(null);
 
-  const {
-    data: pokemonUrls,
-    isLoading,
-    error,
-  } = useQuery(
+  const { data: pokemonUrls, isLoading, error } = useQuery(
     ["pokemons"],
     () => {
       return axios
