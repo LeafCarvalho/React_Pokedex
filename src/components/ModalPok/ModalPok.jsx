@@ -1,5 +1,5 @@
 // Assets
-import imageLoading from '../../Assets/Loading.gif'
+import imageLoading from "../../Assets/Loading.gif";
 // Bootstrap
 import { Modal, Button } from "react-bootstrap";
 // Css
@@ -8,10 +8,14 @@ import styles from "./ModalPok.module.css";
 import React, { useState, useEffect } from "react";
 // Libs
 import axios from "axios";
+// Carrossel
+import { Carousel } from "react-responsive-carousel";
+import "react-responsive-carousel/lib/styles/carousel.min.css";
 
 export const ModalPok = ({ pokemon, closeModal }) => {
   const [evolutions, setEvolutions] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
     const getEvolutions = async (chain) => {
@@ -21,8 +25,9 @@ export const ModalPok = ({ pokemon, closeModal }) => {
 
       const evolutionData = {
         name: chain.species.name,
-        image: evolutionDetailsResponse.data.sprites.other["official-artwork"]
-          .front_default,
+        image:
+          evolutionDetailsResponse.data.sprites.other["official-artwork"]
+            .front_default,
       };
 
       const evolutionsData = [evolutionData];
@@ -38,7 +43,7 @@ export const ModalPok = ({ pokemon, closeModal }) => {
     };
 
     if (pokemon) {
-      setIsLoading(true); // Define isLoading para true ao iniciar o carregamento
+      setIsLoading(true);
 
       axios
         .get(pokemon.species.url)
@@ -49,24 +54,79 @@ export const ModalPok = ({ pokemon, closeModal }) => {
         .then((evolutionsData) => {
           setTimeout(() => {
             setEvolutions(evolutionsData);
-            setIsLoading(false); // Define isLoading para false após dois segundos
+            setIsLoading(false);
           }, 2000);
         })
         .catch((error) => console.error(error));
     }
   }, [pokemon]);
 
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 950);
+    };
+
+    window.addEventListener("resize", handleResize);
+    handleResize();
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
   return (
     <div className={styles.modalContainer}>
       <div className={styles.modalContent}>
         <Modal.Dialog>
           <Modal.Title className={styles.title}>Evoluções</Modal.Title>
-          <Modal.Header closeButton></Modal.Header>
 
           <Modal.Body className={styles.pokeHistory}>
             <div className={styles.rightContent}>
-              {isLoading ? ( // Verifica se isLoading é verdadeiro
-                <div className={styles.loading}><img src={imageLoading} alt="loading image Picachu" /></div>
+              {isLoading ? (
+                <div className={styles.loading}>
+                  <img src={imageLoading} alt="loading image Picachu" />
+                </div>
+              ) : isMobile ? (
+                <div className={styles.carouselContainer}>
+                  <Carousel
+                    className={styles.carousel}
+                    showThumbs={false}
+                    showStatus={false}
+                    autoPlay={true}
+                    infiniteLoop={true}
+                    renderArrowPrev={(onClickHandler, label) => (
+                      <button
+                        type="button"
+                        onClick={onClickHandler}
+                        title={label}
+                        className={`${styles.carouselArrow} ${styles.carouselArrowPrev}`}
+                      >
+                        {"<"}
+                      </button>
+                    )}
+                    renderArrowNext={(onClickHandler, label) => (
+                      <button
+                        type="button"
+                        onClick={onClickHandler}
+                        title={label}
+                        className={`${styles.carouselArrow} ${styles.carouselArrowNext}`}
+                      >
+                        {">"}
+                      </button>
+                    )}
+                  >
+                    {evolutions.map((evolution, index) => (
+                      <div key={index}>
+                        <p>{evolution.name}</p>
+                        <img
+                          src={evolution.image}
+                          alt={evolution.name}
+                          className={styles.pokemonImage}
+                        />
+                      </div>
+                    ))}
+                  </Carousel>
+                </div>
               ) : (
                 <ul className={styles.evolutions}>
                   {evolutions.map((evolution, index) => (
