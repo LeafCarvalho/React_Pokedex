@@ -56,19 +56,13 @@ export function Pokemon() {
     if (visiblePokemons >= 150) {
       return;
     }
-
     fetchPokemonDetails();
   };
 
-  if (isLoading) {
-    return <div className={styles.loadingPage}>Carregando...</div>;
-  }
-
-  if (error) {
+  if (isLoading || error) {
     return (
-      <div className="error">
-        Hum... Parece que algo deu errado. Caso persista, contate o
-        administrador.
+      <div className={styles.loadingPage}>
+        {isLoading ? "Carregando..." : "Hum... Parece que algo deu errado. Caso persista, contate o administrador."}
       </div>
     );
   }
