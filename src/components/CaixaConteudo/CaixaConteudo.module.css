@@ -12,21 +12,32 @@
 }
 
 
- @media (max-width: 1150px) {
+ @media (max-width: 1200px) {
     .container {
         margin-top: 1rem;
         margin-left: 1rem;
-        top: 100px;
-        left: 25vw;
-        width: 70vw;
+        top: 1vh;
+        left: 2vw;
+        width: 90vw;
     }
  }
 
  @media (max-width: 800px) {
     .container {
-        top: 100px;
-        left: 10vw;
-        width: 80vw;
+        top: 2vh;
+        left: 4vw;
+        width: 90vw;
+        margin-top: 1rem;
+        margin: 1rem auto;
+    }
+ }
+
+ @media (max-width: 560px) {
+    .container {
+        top: 2vh;
+        left: 3vw;
+        width: 90vw;
+        max-width: 100%;
         margin-top: 1rem;
         margin: 1rem auto;
     }

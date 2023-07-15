@@ -195,3 +195,30 @@
 .cardPokemon .fairy {
   background-color: var(--fairy);
 }
+
+@media screen and (max-width: 1200px) {
+  .containerPoke {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .containerPoke {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media screen and (max-width: 560px) {
+  .containerPoke {
+    grid-template-columns: 1fr;
+  }
+
+  .boxPoke {
+    padding: 0 .5rem;
+  }
+
+  .cardPokemon {
+    display: flex;
+    justify-content: space-around;
+  }
+}
