@@ -65,7 +65,7 @@ export function Pokemon() {
   };
 
   if (isLoading) {
-    return <div className="loading">Carregando...</div>;
+    return <div className={styles.loadingPage}>Carregando...</div>;
   }
 
   if (error) {

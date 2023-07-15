@@ -97,11 +97,19 @@
   .closeButton:before {
     content: 'X';
   }
+
+  .loading > img {
+    width: 30%;
+  }
   
   @media (min-width: 1800px) {
     .pokeHistory {
       display: grid;
       grid-template-columns: 1fr;
+    }
+
+    .loading > img {
+      width: 15%;
     }
 
     .evolutions {
@@ -120,12 +128,12 @@
  @media screen and (max-width: 950px) {
   .modalContent {
     display: flex;
-    justify-content: end;
+    justify-content: center;
   }
 
   .title {
     position: absolute;
-    top: 12%;
+    top: 8%;
     left: 50%;
     transform: translate(-50%, -50%);
   }
@@ -151,6 +159,10 @@
 
   .title {
     display: none;
+  }
+
+  .loading > img {
+    width: 60%;
   }
 
   .closeButton {

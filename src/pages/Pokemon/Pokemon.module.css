@@ -119,6 +119,12 @@
   animation: auraPulseAnimation 1.5s infinite;
 }
 
+.loadingPage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
 
 .cardPokemon:nth-child(odd) {
   background-color: var(--normal);

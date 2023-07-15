@@ -2,9 +2,11 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Modal, Button } from "react-bootstrap";
 import styles from "./ModalPok.module.css";
+import imageLoading from '../../Assets/Loading.gif'
 
 export const ModalPok = ({ pokemon, closeModal }) => {
   const [evolutions, setEvolutions] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const getEvolutions = async (chain) => {
@@ -31,13 +33,20 @@ export const ModalPok = ({ pokemon, closeModal }) => {
     };
 
     if (pokemon) {
+      setIsLoading(true); // Define isLoading para true ao iniciar o carregamento
+
       axios
         .get(pokemon.species.url)
         .then((response) => axios.get(response.data.evolution_chain.url))
         .then((evolutionChainResponse) =>
           getEvolutions(evolutionChainResponse.data.chain)
         )
-        .then((evolutionsData) => setEvolutions(evolutionsData))
+        .then((evolutionsData) => {
+          setTimeout(() => {
+            setEvolutions(evolutionsData);
+            setIsLoading(false); // Define isLoading para false após dois segundos
+          }, 2000);
+        })
         .catch((error) => console.error(error));
     }
   }, [pokemon]);
@@ -51,18 +60,22 @@ export const ModalPok = ({ pokemon, closeModal }) => {
 
           <Modal.Body className={styles.pokeHistory}>
             <div className={styles.rightContent}>
-              <ul className={styles.evolutions}>
-                {evolutions.map((evolution, index) => (
-                  <li key={index}>
-                    {evolution.name}
-                    <img
-                      src={evolution.image}
-                      alt={evolution.name}
-                      className={styles.pokemonImage}
-                    />
-                  </li>
-                ))}
-              </ul>
+              {isLoading ? ( // Verifica se isLoading é verdadeiro
+                <div className={styles.loading}><img src={imageLoading} alt="loading image Picachu" /></div>
+              ) : (
+                <ul className={styles.evolutions}>
+                  {evolutions.map((evolution, index) => (
+                    <li key={index}>
+                      {evolution.name}
+                      <img
+                        src={evolution.image}
+                        alt={evolution.name}
+                        className={styles.pokemonImage}
+                      />
+                    </li>
+                  ))}
+                </ul>
+              )}
             </div>
           </Modal.Body>
 
