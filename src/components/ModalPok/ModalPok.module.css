@@ -78,11 +78,6 @@
     object-fit: contain;
   }
 
-  .rightContent {
-    display: flex;
-    flex-wrap: wrap;
-  }
-
   .closeButton {
     position: absolute;
     top: 4%;
@@ -103,3 +98,68 @@
     content: 'X';
   }
   
+  @media (min-width: 1800px) {
+    .pokeHistory {
+      display: grid;
+      grid-template-columns: 1fr;
+    }
+
+    .evolutions {
+      display: flex;
+      justify-content: space-between;
+      height: 100%;
+    }
+
+    .pokemonImage {
+      width: 100%;
+      max-height: 300px;
+      object-fit: contain;
+    }
+ }
+
+ @media screen and (max-width: 950px) {
+  .modalContent {
+    display: flex;
+    justify-content: end;
+  }
+
+  .title {
+    position: absolute;
+    top: 12%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .evolutions {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .pokemonImage {
+    width: 100%;
+    max-height: 120px;
+    object-fit: contain;
+  }
+}
+
+@media screen and (max-width: 441px) {
+  .modalContent {
+    display: flex;
+    justify-content: center;
+    height: 55%;
+  }
+
+  .title {
+    display: none;
+  }
+
+  .closeButton {
+    font-size: 1.7rem;
+    padding: 0;
+    top: 0;
+  }
+
+  .pokemonImage {
+    width: 100%;
+  }
+}
