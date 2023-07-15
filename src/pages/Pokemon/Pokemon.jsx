@@ -1,20 +1,26 @@
-import axios from "axios";
-import { useState, useEffect } from "react";
-import { useQuery } from "react-query";
-import { useNavigate } from "react-router-dom";
-import styles from "../Pokemon/Pokemon.module.css";
+// Components
 import { CaixaConteudo } from "../../components/CaixaConteudo/CaixaConteudo";
-import { Modal, Button } from 'react-bootstrap';
 import { ModalPok } from "../../components/ModalPok/ModalPok";
+// CSS
+import styles from "../Pokemon/Pokemon.module.css";
+// Hooks
+import { useState, useEffect } from "react";
+// Libs
+import axios from "axios";
+import { useQuery } from "react-query";
+
 
 export function Pokemon() {
-  const navigate = useNavigate();
   const limit = 12;
   const [visiblePokemons, setVisiblePokemons] = useState(limit);
   const [pokemonsData, setPokemonsData] = useState([]);
   const [selectedPokemon, setSelectedPokemon] = useState(null);
 
-  const { data: pokemonUrls, isLoading, error } = useQuery(
+  const {
+    data: pokemonUrls,
+    isLoading,
+    error,
+  } = useQuery(
     ["pokemons"],
     () => {
       return axios
@@ -43,7 +49,10 @@ export function Pokemon() {
     const responses = await Promise.all(pokemonRequests);
     const pokemonsDetails = responses.map((response) => response.data);
 
-    setPokemonsData((prevPokemonsData) => [...prevPokemonsData, ...pokemonsDetails]);
+    setPokemonsData((prevPokemonsData) => [
+      ...prevPokemonsData,
+      ...pokemonsDetails,
+    ]);
     setVisiblePokemons(end);
   };
 
@@ -62,7 +71,8 @@ export function Pokemon() {
   if (error) {
     return (
       <div className="error">
-        Hum... Parece que algo deu errado. Caso persista, contate o administrador.
+        Hum... Parece que algo deu errado. Caso persista, contate o
+        administrador.
       </div>
     );
   }
@@ -120,7 +130,11 @@ export function Pokemon() {
           <div
             key={pokemon.id}
             className={styles.cardPokemon}
-            style={{ backgroundColor: `var(${getTypeColor(pokemon.types[0].type.name)})` }}
+            style={{
+              backgroundColor: `var(${getTypeColor(
+                pokemon.types[0].type.name
+              )})`,
+            }}
             onClick={() => setSelectedPokemon(pokemon)}
           >
             <div>
@@ -140,7 +154,11 @@ export function Pokemon() {
                 <li>#{pokemon.id}</li>
                 <li>
                   <img
-                    src={pokemon.sprites.versions["generation-v"]["black-white"]["animated"]["front_default"]}
+                    src={
+                      pokemon.sprites.versions["generation-v"]["black-white"][
+                        "animated"
+                      ]["front_default"]
+                    }
                     alt={pokemon.name}
                   />
                 </li>
@@ -157,7 +175,10 @@ export function Pokemon() {
         </div>
       )}
       {selectedPokemon && (
-        <ModalPok pokemon={selectedPokemon} closeModal={() => setSelectedPokemon(null)} />
+        <ModalPok
+          pokemon={selectedPokemon}
+          closeModal={() => setSelectedPokemon(null)}
+        />
       )}
     </div>
   );

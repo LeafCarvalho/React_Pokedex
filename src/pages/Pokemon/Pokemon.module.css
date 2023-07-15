@@ -19,6 +19,21 @@
   --fairy: #f9aec7;
 }
 
+@keyframes auraPulseAnimation {
+  0% {
+    opacity: 0.7;
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.2);
+  }
+  50% {
+    opacity: 1;
+    box-shadow: 0 0 0 20px rgba(255, 255, 255, 0.801);
+  }
+  100% {
+    opacity: 0.7;
+    box-shadow: 0 0 0 40px rgba(255, 255, 255, 0);
+  }
+}
+
 .title {
   display: flex;
   padding: 1rem 1.8rem;
@@ -102,21 +117,6 @@
 
 .buttonContainer > button:hover {
   animation: auraPulseAnimation 1.5s infinite;
-}
-
-@keyframes auraPulseAnimation {
-  0% {
-    opacity: 0.7;
-    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.2);
-  }
-  50% {
-    opacity: 1;
-    box-shadow: 0 0 0 20px rgba(255, 255, 255, 0.5);
-  }
-  100% {
-    opacity: 0.7;
-    box-shadow: 0 0 0 40px rgba(255, 255, 255, 0);
-  }
 }
 
 
