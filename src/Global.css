@@ -1,39 +1,41 @@
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@200;700;800&display=swap');
 
 :root {
-    --normal: #a6a877;
-    --grass: #77c850;
-    --fire: #ee7f30;
-    --water: #678fee;
-    --electric: #f7cf2e;
-    --ice: #98d5d7;
-    --ground: #dfbf69;
-    --flying: #a98ff0;
-    --poison: #a040a0;
-    --fighting: #bf3029;
-    --psychic: #f65687;
-    --dark: #725847;
-    --rock: #b8a137;
-    --bug: #a8b720;
-    --ghost: #6e5896;
-    --steel: #b9b7cf;
-    --dragon: #6f38f6;
-    --fairy: #f9aec7;
-  }
+  --normal: #a6a877;
+  --grass: #77c850;
+  --fire: #ee7f30;
+  --water: #678fee;
+  --electric: #f7cf2e;
+  --ice: #98d5d7;
+  --ground: #dfbf69;
+  --flying: #a98ff0;
+  --poison: #a040a0;
+  --fighting: #bf3029;
+  --psychic: #f65687;
+  --dark: #725847;
+  --rock: #b8a137;
+  --bug: #a8b720;
+  --ghost: #6e5896;
+  --steel: #b9b7cf;
+  --dragon: #6f38f6;
+  --fairy: #f9aec7;
+  --white-color: #ffffff;
+  --lightgray-color: #d7d7d7;
+}
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: 0;
+  margin: 0;
+  padding: 0;
+  box-sizing: 0;
 }
 
 body {
-    background-color: #D7D7D7;
-    -webkit-font-smoothing: antialiased;
-    font-family: 'Raleway', sans-serif;
-    overflow: hidden;
+  background-color: #D7D7D7;
+  -webkit-font-smoothing: antialiased;
+  font-family: 'Raleway', sans-serif;
+  overflow: hidden;
 }
 
 ul {
-    list-style: none;
-  }
+  list-style: none;
+}

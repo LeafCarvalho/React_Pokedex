@@ -1,15 +1,15 @@
 @keyframes auraPulseAnimation {
   0% {
     opacity: 0.7;
-    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.2);
+    box-shadow: 0 0 0 0 #ffffff33;
   }
   50% {
     opacity: 1;
-    box-shadow: 0 0 0 20px rgba(255, 255, 255, 0.801);
+    box-shadow: 0 0 0 20px #ffffffcd;
   }
   100% {
     opacity: 0.7;
-    box-shadow: 0 0 0 40px rgba(255, 255, 255, 0);
+    box-shadow: 0 0 0 40px #ffffff00;
   }
 }
 
@@ -24,7 +24,7 @@
 }
 
 .boxPoke {
-  background-color: #FFFFFF;
+  background-color: var(--white-color);
   padding: 1rem;
   border-radius: 2rem;
   text-transform: capitalize;
@@ -87,8 +87,8 @@
 .buttonContainer > button {
   border: none;
   padding: 0.7rem;
-  background-color: #D7D7D7;
-  color: #FFFFFF;
+  background-color: var(--lightgray-color);
+  color: var(--white-color);
   border-radius: 1rem;
   font-weight: bolder;
   cursor: pointer;
