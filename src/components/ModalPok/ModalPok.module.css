@@ -206,6 +206,12 @@
     width: 100%;
   }
 
+  .carouselArrow {
+    background-color: #D7D7D7;
+    padding: .3rem;
+    border-radius: 5px;
+  }
+
   .carouselArrowPrev {
     left: 2rem;
   }
