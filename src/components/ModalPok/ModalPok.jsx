@@ -94,11 +94,12 @@ export const ModalPok = ({ pokemon, closeModal }) => {
                     showStatus={false}
                     autoPlay={true}
                     infiniteLoop={true}
+                    showIndicators={false}
                     renderArrowPrev={(onClickHandler, label) => (
                       <button
                         type="button"
                         onClick={onClickHandler}
-                        title={label}
+                        title={label.toString()}
                         className={`${styles.carouselArrow} ${styles.carouselArrowPrev}`}
                       >
                         {"<"}
@@ -108,7 +109,7 @@ export const ModalPok = ({ pokemon, closeModal }) => {
                       <button
                         type="button"
                         onClick={onClickHandler}
-                        title={label}
+                        title={label.toString()}
                         className={`${styles.carouselArrow} ${styles.carouselArrowNext}`}
                       >
                         {">"}
