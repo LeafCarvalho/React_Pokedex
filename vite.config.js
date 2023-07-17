@@ -7,5 +7,5 @@ export default defineConfig({
   plugins: [
     react()
   ],
-  base: '/React_Pokedex/'
+  base: '/react_pokedex'
 })
