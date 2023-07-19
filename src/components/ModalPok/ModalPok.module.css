@@ -182,7 +182,7 @@
   .modalContent {
     display: flex;
     justify-content: center;
-    height: 55%;
+    height: 60%;
     width: 95%;
     position: absolute;
     top: 7vh;

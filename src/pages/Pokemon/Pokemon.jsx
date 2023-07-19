@@ -129,7 +129,9 @@ export function Pokemon() {
           >
             <div>
               <ul>
-                <li>{pokemon.name}</li>
+              <li>
+          <span className={styles.pokeName}>{pokemon.name}</span>
+        </li>
                 <li className={styles.pokemonTypes}>
                   <ul>
                     {pokemon.types.map((type) => (
