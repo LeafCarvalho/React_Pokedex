@@ -45,7 +45,7 @@ export function Pokemon() {
     if (!isLoadingData) {
       const timeout = setTimeout(() => {
         setShowSkeleton(false);
-      }, 2500);
+      }, 1800);
 
       return () => clearTimeout(timeout);
     }
